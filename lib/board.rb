@@ -19,17 +19,23 @@ class Board
  end
 
 def valid?(position)
-   # a,b
+   pos = @fluid_board.size - 1
+    position.each do |el|
+      if( el > pos) && (el < 0)
+         return false 
+      end
+    end
+    true
 end
 
-def empty?(position)
-end
+# def empty?(position)
+# end
 
 
 end
 
 #what is a new board supposed to have board size for a big board
 # 
-# # load "board.rb"
-# boar = Board.new(3)
-# boar.display_board
+# load "board.rb"
+board = Board.new(3)
+p board.valid?([-2,2])
