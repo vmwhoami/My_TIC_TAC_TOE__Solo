@@ -12,9 +12,10 @@ class Game
 	end
 
 	def ask_game_size
-		print "Please input a game size if no size will be provided the game will be 3X3 by default: "
+		puts "Please input a game size a nuber if no size will be provided"
+		print " or the input won't be a number the game will be 3X3 by default: "
 		size = gets.chomp.to_i
-    	size = 3 if  size == 0 || size.empty?
+    	size = 3 if  size == 0 
 		@board = Board.new(size)
 		@board.display_board
     end
@@ -29,6 +30,5 @@ end
 # A new winner
 # # load "game.rb"
 game = Game.new
-p game.player_one_name
-# game.ask_game_size
+game.ask_game_size
 

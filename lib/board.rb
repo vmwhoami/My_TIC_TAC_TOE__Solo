@@ -2,40 +2,38 @@ class Board
     attr_accessor :fluid_board 
  def initialize(size)
     @fluid_board = Array.new(size){Array.new(size, "-")}
-
+    self.populate_board
  end
 
  def display_board
-  puts "_____________"
-  puts
-  puts  "| #{@fluid_board[0][0]} | #{@fluid_board[0][1]} | #{@fluid_board[0][2]} |"
-  puts '-------------'
-  puts
-  puts  "| #{@fluid_board[1][0]} | #{@fluid_board[1][1]} | #{@fluid_board[1][2]} |"
-  puts '-------------'
-  puts
-  puts  "| #{@fluid_board[2][0]} | #{@fluid_board[2][1]} | #{@fluid_board[2][2]} |"
-  puts "_____________"
+
+@fluid_board.each do |row|
+      puts
+      puts '-'*(row.size*5)
+      row.each do |col|   
+      print "| #{col} |" if "| #{col} |".size == 5
+      print "| #{col}|" if "| #{col} |".size > 5
+      end
+   end
+   puts
+   puts '-'*(@fluid_board.size*5)
+   puts
  end
 
-def valid?(position)
-   pos = @fluid_board.size - 1
-    position.each do |el|
-      if( el > pos) && (el < 0)
-         return false 
+def populate_board
+ board_num =  @fluid_board.size * @fluid_board.size
+  arr = (1..board_num).to_a
+      @fluid_board.map!.with_index do |row,indx_1|
+         row.map!.with_index do |col,indx_2|
+               col = arr.shift
+         end
       end
-    end
-    true
 end
-
-# def empty?(position)
-# end
 
 
 end
 
-#what is a new board supposed to have board size for a big board
-# 
-# load "board.rb"
-board = Board.new(3)
-p board.valid?([-2,2])
+# # load "board.rb"
+# board = Board.new(4)
+# # p board.populate_board
+# board.display_board
