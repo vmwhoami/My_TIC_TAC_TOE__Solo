@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
-
-
-puts "Welcome to my awsome TIC TAC TOE game  "
+puts 'Welcome to my awsome TIC TAC TOE game  '
 # sleep(0.4)
 puts "You should know the rules by now.
  If you don't it's kind of your problem"

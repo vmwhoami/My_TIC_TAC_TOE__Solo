@@ -8,10 +8,9 @@ class Game
     @players.new_players
     @player_one = @players.player_one
     @player_two = @players.player_two
-    @player_one_name = @player_one[:name]
-    @player_two_name = @player_two[:name]
     @already_picked = []
-    @game_size = 9
+    @game_size = nil
+    @game_long = nil
   end
 
   def ask_game_size
@@ -19,33 +18,53 @@ class Game
     print " or the input won't be a number the game will be 3X3 by default: "
     size = gets.chomp.to_i
     size = 3 if size.zero?
-		@board = Board.new(size)
-		@board.display_board
-		self.game_size
+    @board = Board.new(size)
+    @board.display_board
+    game_size
+    ask_move_update_board
   end
 
   def game_size
     @game_size = @board.fluid_board.size * @board.fluid_board.size
   end
 
-	def made_move?(num)
-    @already_picked.include?(num)
-	end
-	
-	def draw?
+  def game_long
+    @game_long = @board.fluid_board.size * @board.fluid_board.size
+  end
+
+  def draw?
     @game_size.zero?
   end
 
-	
-	def make_move
-		puts "We will randomly select a player to start #{@player_one_name} "
-		"#{@player_one_name} make a move!"
+  def swap_players(arr)
+    arr[0], arr[1] = arr[1], arr[0]
+    arr[0]
+  end
 
-	end
+  def ask_move_update_board
+    game_long
+    players = [@player_two, @player_one]
 
+    until @board.win? || draw?
+      player = swap_players(players)
+      name = player[:name]
+      mark = player[:mark]
+      puts "#{name} please make a move"
+      move = gets.chomp.to_i
+      until @board.valid_move?(move)
+        puts "Please input a number between 1 and #{@game_long} check that the other playes didn't input that already"
+        move = gets.chomp.to_i
+      end
+      @board.update_board(@board.find_index(move), mark)
+      @board.display_board
+      puts "#{name} has won congratulations you piece of shit!" if @board.win?
+      @game_size -= 1
+    end
+    return "It's a draw you losers" unless draw?
+  end
 end
 
 # # load "game.rb"
 game = Game.new
 game.ask_game_size
-
+# game.ask_move_update_board
