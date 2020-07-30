@@ -25,13 +25,72 @@ class Board
     @fluid_board.map! { |row| row.map { arr.shift } }
   end
 
+  def valid_move?(move)
+    return true	if	@fluid_board.find { |el| el.find { |col| col == move.to_i } }
+    false
+  end
+
+  def find_index(num)
+   arr = []
+   @fluid_board.each_with_index do |row, indx|
+     if row.include?(num)
+       arr << indx
+       arr << row.index(num)
+     end
+   end
+   arr
+ end
+
+ def update_board(move, value)
+   a, b = move
+   @fluid_board[a][b] = value
+ end
+
+ def win_row?
+  @fluid_board.each { |row| row.each { |col| return true if	row.all?(col) } }
+  false
+  end
+
+ def win_col?
+  @fluid_board.transpose.each { |row| row.each { |col| return true if	row.all?(col) } }
+  false
+ end
+
+ def win_diagonal_right?
+  arr = @fluid_board
+  r_padding = [*0..(arr.size - 1)].reverse.map { |i| [nil] * i }
+  padded_r = r_padding.reverse.zip(arr).zip(r_padding).map(&:flatten)
+  right = padded_r.transpose.map(&:compact).select { |el| el.size == arr.size }.flatten
+  right.uniq.compact.length == 1
+ end
+
+ def win_diagonal_left?
+  arr = @fluid_board
+  l_padding = [*0..(arr.size - 1)].map { |i| [nil] * i }
+  padded_l = l_padding.reverse.zip(arr).zip(l_padding).map(&:flatten)
+  left = padded_l.transpose.map(&:compact).select { |el| el.size == arr.size }.flatten
+  left.uniq.compact.length == 1
+end
 
 
+def win?
+  self.win_row?||self.win_col? || self.win_diagonal_right? || self.win_diagonal_left?
+end
 
-  
 end
 
 # # load "board.rb"
-# board = Board.new(4)
-# p board.populate_board
+board = Board.new(4)
+p board.find_index(5)
+board.display_board
+
+p board.find_index(4)
+p board.find_index(7)
+p board.find_index(10)
+p board.find_index(13)
+
+board.update_board([0, 0], 'X')
+board.update_board([0, 1], 'X')
+board.update_board([0, 2], 'X')
+board.update_board([0, 3], 'X')
 # board.display_board

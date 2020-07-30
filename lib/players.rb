@@ -40,6 +40,8 @@ class Players
     ask_name
     random_player
   end
+
+  
 end
 
 # load "players.rb"
