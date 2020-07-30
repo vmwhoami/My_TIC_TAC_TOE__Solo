@@ -24,6 +24,11 @@ class Board
     arr = (1..board_num).to_a
     @fluid_board.map! { |row| row.map { arr.shift } }
   end
+
+
+
+
+  
 end
 
 # # load "board.rb"

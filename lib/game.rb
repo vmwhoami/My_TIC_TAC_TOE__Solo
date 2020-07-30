@@ -65,24 +65,38 @@ class Game
   end
 
   def win_col?
-    @board.fluid_board.each_with_index do |row, index_row|
-    end
+	@board.fluid_board.transpose.each { |row| row.each { |col| return true if	row.all?(col) } }
+	false
   end
+  
+	def win_diagonal?
+		arr = @board.fluid_board
+		padding = [*0..(arr.size - 1)].reverse.map { |i| [nil] * i }
+		padded = padding.reverse.zip(arr).zip(padding).map(&:flatten)
+		right = padded.transpose.map(&:compact).select{|el| el.size == arr.size}.flatten
+		right
+  end
+
+
 end
 
 # # load "game.rb"
 game = Game.new
 game.ask_game_size
-p game.find_index(1)
 p game.find_index(2)
-p game.find_index(3)
+p game.find_index(6)
+p game.find_index(10)
+p game.find_index(14)
 
-# game.update_board([0, 0],"X")
-# game.update_board([0, 1],"O")
-# game.update_board([0, 2],"X")
+# game.update_board([0, 1],"X")
+# game.update_board([1, 1],"X")
+# game.update_board([2, 1],"O")
+# game.update_board([3, 1],"X")
 # game.board.display_board
 # p game.win_row?
-
+p game.win_diagonal?
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # --------------------
 # | 1 || 2 || 3 || 4 |
 # --------------------
