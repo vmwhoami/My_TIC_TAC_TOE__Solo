@@ -13,13 +13,16 @@ class Game
     @game_long = nil
   end
 
-  def ask_game_size
-    puts 'Please input a game size a nuber if no size will be provided'
-    print " or the input won't be a number the game will be 3X3 by default: "
+  def begin_game
+    puts
+    puts 'Please input a game size a nuber'
+    puts 'The game is a square matrix so number 4 is 4X4 game '
+    print "If the input won't be a number the game will be 3X3 by default: "
     size = gets.chomp.to_i
     size = 3 if size.zero?
     @board = Board.new(size)
     @board.display_board
+    puts 'We will randomly select a player to start'
     game_size
     ask_move_update_board
   end
@@ -49,10 +52,11 @@ class Game
       player = swap_players(players)
       name = player[:name]
       mark = player[:mark]
-      puts "#{name} please make a move"
+      print "#{name} please make a move remember you are playing with #{mark} :  "
       move = gets.chomp.to_i
       until @board.valid_move?(move)
-        puts "Please input a number between 1 and #{@game_long} check that the other playes didn't input that already"
+        puts "Please input a number between 1 and #{@game_long}"
+        print "check that the other playes didn't input that already :  "
         move = gets.chomp.to_i
       end
       @board.update_board(@board.find_index(move), mark)
@@ -63,8 +67,3 @@ class Game
     return "It's a draw you losers" unless draw?
   end
 end
-
-# # load "game.rb"
-game = Game.new
-game.ask_game_size
-# game.ask_move_update_board

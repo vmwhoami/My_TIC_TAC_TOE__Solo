@@ -41,11 +41,3 @@ class Players
     random_player
   end
 end
-
-# load "players.rb"
-# player = Players.new
-# player.new_players
-# player.ask_name
-# player.random_player
-# player.player_one
-# player.player_two
