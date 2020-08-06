@@ -26,7 +26,7 @@ class Board
   end
 
   def valid_move?(move)
-    return true	if @fluid_board.find { |el| el.find { |col| col == move.to_i } }
+    return true if @fluid_board.find { |el| el.find { |col| col == move.to_i } }
 
     false
   end

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+# !/usr/bin/env ruby
 
 puts 'Welcome to my awsome TIC TAC TOE game'
 sleep(0.4)
