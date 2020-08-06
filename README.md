@@ -25,9 +25,12 @@
 
 ## 🧐 About <a name = "about"></a>
 
-This project is meant for learning and implementing object oriented programming principles in Ruby.
+Built the project to better understand object oriented programming principles in Ruby. It's a self-test to see if my Ruby knowledge would allow building a fluid grid for
+ the Tic -Tac -Toe game.
 
-<!-- ![Screenshot](./screenshot.png) -->
+![Screenshot](https://raw.githubusercontent.com/vmwhoami/My_TIC_TAC_TOE__Solo/work/assets/img/Fluid_grid.jpg)
+
+![Screenshot](https://raw.githubusercontent.com/vmwhoami/My_TIC_TAC_TOE__Solo/work/assets/img/3X3.jpg)
 
 ## 🔧 Built with<a name = "built_using"></a>
 
