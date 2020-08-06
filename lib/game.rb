@@ -60,9 +60,9 @@ class Game
       end
       @board.update_board(@board.find_index(move), mark)
       @board.display_board
-      puts "#{name} has won congratulations you piece of shit!" if @board.win?
+      puts "#{name} has won congratulations!" if @board.win?
       @game_size -= 1
     end
-    return "It's a draw you losers" unless draw?
+    return "It's a draw! You are both losers!" unless draw?
   end
 end

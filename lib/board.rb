@@ -77,20 +77,3 @@ class Board
     win_row? || win_col? || win_diagonal_right? || win_diagonal_left?
   end
 end
-
-# load "board.rb"
-# board = Board.new(4)
-# board.find_index(1)
-# board.find_index(6)
-# board.find_index(11)
-# board.find_index(16)
-
-# board.find_index(4)
-# board.find_index(7)
-# board.find_index(10)
-# board.find_index(13)
-
-# board.update_board([0, 0], "L")
-# board.update_board([1, 0], "L")
-# board.update_board([2, 0], "L")
-# board.update_board([3, 0], "L")

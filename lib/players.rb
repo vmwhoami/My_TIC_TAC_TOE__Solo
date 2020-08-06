@@ -10,11 +10,11 @@ class Players
   def ask_name
     name = gets.chomp
     while not_empty_name(name)
-      print 'You @%?#!!!!! please enter a name that is not empty: '
+      print 'Please enter a name that is not empty: '
       name = gets.chomp
     end
     while same_name(name)
-      print 'The name can not be the same so please input another name you shmuck: '
+      print 'The name can not be the same so please input another name: '
       name = gets.chomp
     end
     @players << name
@@ -34,9 +34,9 @@ class Players
   end
 
   def new_players
-    print "What's your name Hoe?: "
+    print 'First person input your name : '
     ask_name
-    print 'Second hoe please enter your name: '
+    print 'Second person please enter your name: '
     ask_name
     random_player
   end
