@@ -26,7 +26,7 @@ class Board
   end
 
   def valid_move?(move)
-    return true	if	@fluid_board.find { |el| el.find { |col| col == move.to_i } }
+    return true	if @fluid_board.find { |el| el.find { |col| col == move.to_i } }
 
     false
   end
@@ -48,12 +48,12 @@ class Board
   end
 
   def win_row?
-    @fluid_board.each { |row| row.each { |col| return true if	row.all?(col) } }
+    @fluid_board.each { |row| row.each { |col| return true if row.all?(col) } }
     false
   end
 
   def win_col?
-    @fluid_board.transpose.each { |row| row.each { |col| return true if	row.all?(col) } }
+    @fluid_board.transpose.each { |row| row.each { |col| return true if row.all?(col) } }
     false
   end
 
