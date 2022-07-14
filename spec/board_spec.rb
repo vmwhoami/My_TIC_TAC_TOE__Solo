@@ -1,4 +1,4 @@
-require './lib/game.rb'
+require './lib/game'
 
 describe Board do
   describe 'board manipulations' do

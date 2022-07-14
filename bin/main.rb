@@ -7,9 +7,8 @@ puts 'You should know the rules by now.'
 puts
 puts "If you don't that sucks"
 sleep(3)
-require_relative '../lib/game.rb'
-game = Game.new
-game.begin_game
+require_relative '../lib/game'
+game = Game.new.start
 
 puts 'HAVE A NICE DAY!!!'
 puts

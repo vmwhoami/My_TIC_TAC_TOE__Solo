@@ -1,5 +1,6 @@
 class Board
   attr_accessor :fluid_board
+
   def initialize(size)
     @fluid_board = Array.new(size) { Array.new(size, '-') }
     populate_board

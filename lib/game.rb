@@ -1,7 +1,8 @@
-require_relative 'players.rb'
-require_relative 'board.rb'
+require_relative 'players'
+require_relative 'board'
 class Game
   attr_accessor :player_one_name, :player_two_name, :board
+
   def initialize
     @players = Players.new
     @players.new_players
@@ -12,7 +13,7 @@ class Game
     @game_long = nil
   end
 
-  def begin_game
+  def start
     puts
     puts 'Please input a game size a nuber'
     puts 'The game is a square matrix so number 4 is 4X4 game '
