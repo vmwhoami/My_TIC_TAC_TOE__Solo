@@ -20,6 +20,16 @@ class Players
     @players << name
   end
 
+  def new_players
+    print 'First person input your name : '
+    ask_name
+    print 'Second person please enter your name: '
+    ask_name
+    random_player
+  end
+
+  private
+
   def same_name(name)
     @players.include?(name)
   end
@@ -31,13 +41,5 @@ class Players
   def random_player
     @player_one[:name] = @players.sample
     @player_two[:name] = (@players - [@player_one[:name]]).join
-  end
-
-  def new_players
-    print 'First person input your name : '
-    ask_name
-    print 'Second person please enter your name: '
-    ask_name
-    random_player
   end
 end

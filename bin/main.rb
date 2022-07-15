@@ -8,7 +8,6 @@ puts
 puts "If you don't that sucks"
 sleep(3)
 require_relative '../lib/game'
-game = Game.new.start
-
+Game.new.start
 puts 'HAVE A NICE DAY!!!'
 puts
