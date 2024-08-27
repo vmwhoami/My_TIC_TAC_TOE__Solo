@@ -46,6 +46,17 @@ Clone and run this repository by running these commands on the terminal:
 - Run ruby main.rb
 ```
 
+In case you don't have ruby installed you can run it inside docker container
+
+```
+docker-compose up --build -d
+```
+then atach to that container and inside the container run
+```
+/usr/src/app/bin# ruby main.rb 
+```
+
+
 ## Game rules
 
 - There are only 2 players.
