@@ -10,5 +10,6 @@ COPY . .
 # Change directory to where the main.rb file is located
 WORKDIR /usr/src/app/bin
 
+# docker-compose run tictactoe
 # Command to run your Tic-Tac-Toe game
 CMD ["ruby", "main.rb"]
