@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  tictactoe:
+    build: .
+    command: ruby main.rb
+    volumes:
+      - ./bin:/usr/src/app/bin
+    working_dir: /usr/src/app/bin
+    tty: true
